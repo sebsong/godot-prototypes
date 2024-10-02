@@ -35,8 +35,10 @@ animations = [{
 radius = 9.0
 height = 22.6667
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("AnimatedSprite")]
+position = Vector2(571, 310)
 script = ExtResource("1_vmfku")
+AnimatedSprite = NodePath("AnimatedSprite2D")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
