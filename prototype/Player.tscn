@@ -35,17 +35,17 @@ animations = [{
 radius = 9.0
 height = 22.6667
 
-[node name="Player" type="Area2D" node_paths=PackedStringArray("AnimatedSprite")]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("AnimatedSprite", "CollisionShape")]
 position = Vector2(571, 310)
 script = ExtResource("1_vmfku")
 AnimatedSprite = NodePath("AnimatedSprite2D")
+CollisionShape = NodePath("CollisionShape2D")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4adl4")
-animation = &"up"
-frame_progress = 0.265209
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3, 3)

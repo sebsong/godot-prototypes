@@ -3,18 +3,22 @@ using System;
 
 public partial class Player : Area2D
 {
+	[Signal]
+	public delegate void HitEventHandler();
+
 	[Export]
 	public int Speed = 400;
-
 	[Export]
-	public AnimatedSprite2D AnimatedSprite;
+	private AnimatedSprite2D AnimatedSprite;
+	[Export]
+	private CollisionShape2D CollisionShape;
 
-	public Vector2 ScreenSize;
+	private Vector2 _ScreenSize;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		ScreenSize = GetViewportRect().Size;
+		_ScreenSize = GetViewportRect().Size;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,10 +27,21 @@ public partial class Player : Area2D
 		HandleInput(delta);
 	}
 
+	private void OnBodyEntered(Node2D body)
+	{
+		Hide();
+		EmitSignal(SignalName.Hit);
+		CollisionShape.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+	}
+
 	private void HandleInput(double delta)
 	{
 		Vector2 velocity = Vector2.Zero;
 
+		if (Input.IsActionPressed("quit"))
+		{
+			GetTree().Quit();
+		}
 		if (Input.IsActionPressed("move_right"))
 		{
 			velocity.X += 1;
@@ -48,7 +63,7 @@ public partial class Player : Area2D
 		{
 			velocity = velocity.Normalized() * Speed * (float)delta;
 			UpdatePosition(velocity);
-			AnimatedSprite.Play();
+			MovementAnimation(velocity);
 		}
 		else
 		{
@@ -57,12 +72,29 @@ public partial class Player : Area2D
 
 	}
 
+	private void MovementAnimation(Vector2 velocity)
+	{
+
+		string AnimationName = "walk";
+		if (velocity.X != 0)
+		{
+			AnimatedSprite.FlipH = velocity.X < 0;
+		}
+
+		if (velocity.Y != 0)
+		{
+			AnimationName = "up";
+			AnimatedSprite.FlipV = velocity.Y > 0;
+		}
+		AnimatedSprite.Play(new StringName(AnimationName));
+	}
+
 	private void UpdatePosition(Vector2 velocity)
 	{
 		Position += velocity;
 		Position = new Vector2(
-				Mathf.Clamp(Position.X, 0, ScreenSize.X),
-				Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
+				Mathf.Clamp(Position.X, 0, _ScreenSize.X),
+				Mathf.Clamp(Position.Y, 0, _ScreenSize.Y)
 			);
 
 	}
