@@ -14,11 +14,13 @@ public partial class Player : Area2D
 	private CollisionShape2D CollisionShape;
 
 	private Vector2 _ScreenSize;
+	private Vector2 _PlayerSize;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_ScreenSize = GetViewportRect().Size;
+		_PlayerSize = CollisionShape.Shape.GetRect().Size;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,8 +31,19 @@ public partial class Player : Area2D
 
 	private void OnBodyEntered(Node2D body)
 	{
-		Hide();
 		EmitSignal(SignalName.Hit);
+		KillPlayer();
+	}
+
+	private void RevivePlayer()
+	{
+		Show();
+		CollisionShape.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
+	}
+
+	private void KillPlayer()
+	{
+		Hide();
 		CollisionShape.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 	}
 
@@ -93,8 +106,8 @@ public partial class Player : Area2D
 	{
 		Position += velocity;
 		Position = new Vector2(
-				Mathf.Clamp(Position.X, 0, _ScreenSize.X),
-				Mathf.Clamp(Position.Y, 0, _ScreenSize.Y)
+				Mathf.Clamp(Position.X, _PlayerSize.X, _ScreenSize.X - _PlayerSize.X),
+				Mathf.Clamp(Position.Y, _PlayerSize.Y, _ScreenSize.Y - _PlayerSize.Y)
 			);
 
 	}
