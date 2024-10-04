@@ -12,9 +12,9 @@ config_version=5
 
 config/name="tutorial_2d"
 config/description="https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
-run/main_scene="res://Player.tscn"
+run/main_scene="res://scenes/Player.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://art/icon.svg"
 
 [dotnet]
 
