@@ -16,6 +16,9 @@ public partial class Main : Node
 	[Export]
 	public Timer ScoreTimer;
 
+	[Export]
+	public PathFollow2D EnemySpawnLocation;
+
 	private int _score;
 
 	// Called when the node enters the scene tree for the first time.
@@ -55,6 +58,11 @@ public partial class Main : Node
 
 	private void OnEnemySpawnTimerTimeout()
 	{
+		EnemySpawnLocation.ProgressRatio = GD.Randf();
 
+		Enemy enemy = _EnemyScene.Instantiate<Enemy>();
+		enemy.Position = EnemySpawnLocation.Position;
+		enemy.Rotation = EnemySpawnLocation.Rotation + Mathf.Pi / 2;
+		AddChild(enemy);
 	}
 }

@@ -53,6 +53,10 @@ position = Vector2(591, 302)
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_osvyl")
+_speedMin = 150.0
+_speedMax = 250.0
+_rotationMin = -0.785
+_rotationMax = 0.785
 _AnimatedSprite = NodePath("AnimatedSprite2D")
 metadata/_edit_group_ = true
 
