@@ -29,6 +29,12 @@ public partial class Player : Area2D
 		HandleInput(delta);
 	}
 
+	public void Start(Vector2 position)
+	{
+		Position = position;
+		RevivePlayer();
+	}
+
 	private void OnBodyEntered(Node2D body)
 	{
 		EmitSignal(SignalName.Hit);
