@@ -36,8 +36,8 @@ one_shot = true
 position = Vector2(600, 350)
 
 [node name="EnemyPath" type="Path2D" parent="."]
-position = Vector2(24, 0)
-scale = Vector2(0.891566, 1.26829)
+position = Vector2(-40, -60)
+scale = Vector2(1, 1.5)
 curve = SubResource("Curve2D_hf33f")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyPath"]

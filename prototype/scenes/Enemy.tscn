@@ -45,8 +45,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kwot2"]
-radius = 48.0
-height = 132.0
+radius = 36.0
+height = 100.0
 
 [node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("_AnimatedSprite")]
 position = Vector2(591, 302)
@@ -71,7 +71,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kwot2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0.500011, -1.90735e-06)
-scale = Vector2(6.55, 4.8)
+position = Vector2(0.500016, 2.09808e-05)
+scale = Vector2(4.95, 3.6)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]
