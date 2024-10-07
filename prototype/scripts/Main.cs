@@ -35,6 +35,7 @@ public partial class Main : Node
 
 	public void NewGame()
 	{
+		GetTree().CallGroup("enemies", Node.MethodName.QueueFree);
 		HUD.ShowMessage("Get Ready!");
 		_score = 0;
 		HUD.UpdateScoreLabel(_score);
