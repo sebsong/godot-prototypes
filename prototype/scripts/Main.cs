@@ -16,6 +16,10 @@ public partial class Main : Node
 	public Timer EnemySpawnTimer;
 	[Export]
 	public Timer ScoreTimer;
+	[Export]
+	public AudioStreamPlayer BackgroundMusic;
+	[Export]
+	public AudioStreamPlayer GameOverSound;
 
 	[Export]
 	public Ui HUD;
@@ -41,6 +45,7 @@ public partial class Main : Node
 		HUD.UpdateScoreLabel(_score);
 		_player.Start(PlayerStart.Position);
 		StartTimer.Start();
+		BackgroundMusic.Play();
 	}
 
 	public void GameOver()
@@ -48,6 +53,8 @@ public partial class Main : Node
 		HUD.GameOver();
 		EnemySpawnTimer.Stop();
 		ScoreTimer.Stop();
+		BackgroundMusic.Stop();
+		GameOverSound.Play();
 	}
 
 	private void OnPlayerHit()
