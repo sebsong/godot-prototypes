@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.IO;
 
 public partial class Main : Node
 {
@@ -17,15 +18,15 @@ public partial class Main : Node
 	public Timer ScoreTimer;
 
 	[Export]
+	public Ui HUD;
+
+	[Export]
 	public PathFollow2D EnemySpawnLocation;
 
 	private int _score;
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		NewGame();
-	}
+	public override void _Ready() { }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -34,15 +35,23 @@ public partial class Main : Node
 
 	public void NewGame()
 	{
+		HUD.ShowMessage("Get Ready!");
 		_score = 0;
+		HUD.UpdateScoreLabel(_score);
 		_player.Start(PlayerStart.Position);
 		StartTimer.Start();
 	}
 
 	public void GameOver()
 	{
+		HUD.GameOver();
 		EnemySpawnTimer.Stop();
 		ScoreTimer.Stop();
+	}
+
+	private void OnPlayerHit()
+	{
+		GameOver();
 	}
 
 	private void OnStartTimerTimeout()
@@ -54,6 +63,7 @@ public partial class Main : Node
 	private void OnScoreTimerTimeout()
 	{
 		_score++;
+		HUD.UpdateScoreLabel(_score);
 	}
 
 	private void OnEnemySpawnTimerTimeout()
