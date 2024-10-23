@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://ci5f8qs58ndis"]
+[gd_scene load_steps=5 format=3 uid="uid://ci5f8qs58ndis"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://wfmnl0qhnryw" path="res://icon.svg" id="1_8j4vn"]
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_faoms"]
+[ext_resource type="PackedScene" uid="uid://hndsjfe5olgq" path="res://scenes/player.tscn" id="2_np8jj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cru0l"]
+size = Vector2(127.771, 130.51)
+
+[node name="main" type="Node2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_faoms")
+
+[node name="floor" type="Sprite2D" parent="."]
+position = Vector2(593, 596)
+scale = Vector2(8.74219, 0.398438)
+texture = ExtResource("1_8j4vn")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/Area2D"]
+position = Vector2(-0.0571899, 0)
+shape = SubResource("RectangleShape2D_cru0l")
+
+[node name="Player" parent="." instance=ExtResource("2_np8jj")]
+position = Vector2(605, 352)
