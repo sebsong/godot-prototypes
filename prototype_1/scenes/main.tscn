@@ -75,9 +75,10 @@ metadata/_edit_group_ = true
 position = Vector2(-0.0571899, 0)
 shape = SubResource("RectangleShape2D_cru0l")
 
-[node name="Player" parent="." node_paths=PackedStringArray("Ball") instance=ExtResource("2_np8jj")]
-position = Vector2(604, 185)
-Ball = NodePath("../Ball")
-
 [node name="Ball" parent="." instance=ExtResource("4_ipoed")]
 position = Vector2(408, 13)
+
+[node name="Player" parent="." node_paths=PackedStringArray("Ball") instance=ExtResource("2_np8jj")]
+z_index = 10
+position = Vector2(604, 185)
+Ball = NodePath("../Ball")
