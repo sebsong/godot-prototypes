@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cudy50cf3hwh5"]
+
+[ext_resource type="Texture2D" uid="uid://wfmnl0qhnryw" path="res://icon.svg" id="1_xkfei"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rexj3"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dctds"]
+
+[node name="Ball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_rexj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.919144, 0, 0.301558, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_xkfei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dctds")
