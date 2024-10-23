@@ -1,12 +1,11 @@
 using Godot;
 using System;
 
-public partial class Player : Node2D
+public partial class Player : CharacterBody2D
 {
-
+	[ExportCategory("Movement")]
 	[Export]
 	public float Speed;
-
 	[Export]
 	public float Gravity;
 
@@ -18,24 +17,40 @@ public partial class Player : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		// _ApplyGravity(delta);
-		_Walk(delta);
+		_Walk();
+		MoveAndSlide();
 	}
 
-	private void _Walk(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
+		base._PhysicsProcess(delta);
+		_ApplyGravity();
+	}
+
+	private void _Walk()
+	{
+		float velocityX = Velocity.X;
+		if (Input.IsActionJustReleased("walk_left") && Velocity.X < 0)
+		{
+			velocityX = 0;
+		}
+		if (Input.IsActionJustReleased("walk_right") && Velocity.X > 0)
+		{
+			velocityX = 0;
+		}
 		if (Input.IsActionPressed("walk_left"))
 		{
-			MoveLocalX((float)(-Speed * delta));
+			velocityX = -Speed;
 		}
 		if (Input.IsActionPressed("walk_right"))
 		{
-			MoveLocalX((float)(Speed * delta));
+			velocityX = Speed;
 		}
+		Velocity = new Vector2(velocityX, Velocity.Y);
 	}
 
-	private void _ApplyGravity(double delta)
+	private void _ApplyGravity()
 	{
-		MoveLocalY((float)(Gravity * delta));
+		Velocity = new Vector2(Velocity.X, Gravity);
 	}
 }
