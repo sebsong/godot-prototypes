@@ -3,11 +3,18 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
+	[Export]
+	public Ball Ball;
+
 	[ExportCategory("Movement")]
 	[Export]
 	public float Speed;
 	[Export]
+	public float RideSpeed;
+	[Export]
 	public float Gravity;
+
+	private PathFollow2D _CurrentPath;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -17,6 +24,7 @@ public partial class Player : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		_RidePath(delta);
 		_Walk();
 		MoveAndSlide();
 	}
@@ -47,6 +55,23 @@ public partial class Player : CharacterBody2D
 			velocityX = Speed;
 		}
 		Velocity = new Vector2(velocityX, Velocity.Y);
+	}
+	private void _RidePath(double delta)
+	{
+		if (Input.IsActionJustPressed("ride_path"))
+		{
+			PathFollow2D pathFollow = Ball.FindChild("PathFollow2D") as PathFollow2D;
+			if (_CurrentPath == null)
+			{
+				_CurrentPath = pathFollow;
+			}
+		}
+
+		if (_CurrentPath != null)
+		{
+			Position = _CurrentPath.Position;
+			_CurrentPath.Progress += (float)(RideSpeed * delta);
+		}
 	}
 
 	private void _ApplyGravity()
