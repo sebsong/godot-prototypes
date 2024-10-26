@@ -78,7 +78,7 @@ shape = SubResource("RectangleShape2D_cru0l")
 [node name="Ball" parent="." instance=ExtResource("4_ipoed")]
 position = Vector2(408, 13)
 
-[node name="Player" parent="." node_paths=PackedStringArray("Ball") instance=ExtResource("2_np8jj")]
+[node name="Player" parent="." node_paths=PackedStringArray("_ball") instance=ExtResource("2_np8jj")]
 z_index = 10
 position = Vector2(604, 185)
-Ball = NodePath("../Ball")
+_ball = NodePath("../Ball")
