@@ -10,11 +10,12 @@ bounce = 1.0
 
 [sub_resource type="Curve2D" id="Curve2D_phb1y"]
 
-[node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("Path", "Line")]
+[node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("_path", "_line")]
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_rexj3")
 script = ExtResource("1_w708p")
-Path = NodePath("Path2D")
-Line = NodePath("Line2D")
+_path = NodePath("Path2D")
+_line = NodePath("Line2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.919144, 0, 0.301558, 1)

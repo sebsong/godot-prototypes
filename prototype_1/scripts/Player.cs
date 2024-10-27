@@ -4,6 +4,7 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	[Export] private Ball _ball;
+	[Export] private float _throwSpeed;
 
 	[ExportCategory("Movement")] [Export] private float _speed;
 	[Export] private float _rideSpeed;
@@ -20,19 +21,33 @@ public partial class Player : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_Walk();
+		_CheckWalk();
 		if (_IsPathSet())
 		{
-			Position = _currentPath.Position;
-			_currentPath.Progress += (float)(_rideSpeed * delta);
-			_Jump(delta);
+			_RidePath(delta);
+			_CheckJump(delta);
 		}
 		else
 		{
-			_RidePath(delta);
+			_CheckRidePath(delta);
+		}
+
+		if (!_ball.IsActive())
+		{
+			_CheckThrowBall();
+		}
+		else
+		{
+			_CheckRecallBall();
 		}
 
 		MoveAndSlide();
+	}
+
+	private void _RidePath(double delta)
+	{
+		Position = _currentPath.Position;
+		_currentPath.Progress += (float)(_rideSpeed * delta);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -41,7 +56,7 @@ public partial class Player : CharacterBody2D
 		_ApplyGravity(delta);
 	}
 
-	private void _Walk()
+	private void _CheckWalk()
 	{
 		var velocityX = Velocity.X;
 		if (Input.IsActionJustReleased("walk_left") && Velocity.X < 0)
@@ -67,7 +82,7 @@ public partial class Player : CharacterBody2D
 		Velocity = new Vector2(velocityX, Velocity.Y);
 	}
 
-	private void _RidePath(double delta)
+	private void _CheckRidePath(double delta)
 	{
 		if (Input.IsActionJustPressed("ride_path"))
 		{
@@ -76,12 +91,30 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	private void _Jump(double delta)
+	private void _CheckJump(double delta)
 	{
 		if (Input.IsActionJustPressed("jump"))
 		{
 			_ClearPath();
 			Velocity = new Vector2(Velocity.X, -_jumpSpeed);
+		}
+	}
+
+	private void _CheckThrowBall()
+	{
+		if (Input.IsActionJustPressed("throw_ball"))
+		{
+			var mousePosition = GetViewport().GetMousePosition();
+			var velocity = (mousePosition - GlobalPosition).Normalized() * _throwSpeed;
+			_ball.Throw(GlobalPosition, velocity);
+		}
+	}
+	
+	private void _CheckRecallBall()
+	{
+		if (Input.IsActionJustPressed("recall_ball"))
+		{
+			_ball.Recall();
 		}
 	}
 
