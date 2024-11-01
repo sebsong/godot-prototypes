@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://mdn21i3e2apn"]
+
+[ext_resource type="PackedScene" uid="uid://bb5xmhdlbuyu0" path="res://loop.tscn" id="1_w325i"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Loop" parent="." instance=ExtResource("1_w325i")]
+position = Vector2(195, 25)

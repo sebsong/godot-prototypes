@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb5xmhdlbuyu0"]
+
+[ext_resource type="Script" path="res://Loop.cs" id="1_c5txt"]
+
+[sub_resource type="Curve2D" id="Curve2D_0muan"]
+_data = {
+"points": PackedVector2Array(-243.359, -272.82, 243.359, 272.82, 911, 178, 278.337, 317.03, -278.337, -317.03, 219, 477, -393.286, -356.596, 393.286, 356.596, 911, 178)
+}
+point_count = 3
+
+[node name="Path2D" type="Path2D" node_paths=PackedStringArray("_Line")]
+position = Vector2(184, 39.6756)
+scale = Vector2(0.686677, 0.9077)
+curve = SubResource("Curve2D_0muan")
+script = ExtResource("1_c5txt")
+_Line = NodePath("Line2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(911, 178)
+rotation = 0.842411
+
+[node name="Line2D" type="Line2D" parent="."]
