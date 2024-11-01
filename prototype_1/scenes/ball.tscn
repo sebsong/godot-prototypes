@@ -11,6 +11,7 @@ bounce = 1.0
 [sub_resource type="Curve2D" id="Curve2D_phb1y"]
 
 [node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("_path", "_line")]
+top_level = true
 collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_rexj3")
 script = ExtResource("1_w708p")
@@ -30,6 +31,7 @@ top_level = true
 curve = SubResource("Curve2D_phb1y")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+top_level = true
 
 [node name="Line2D" type="Line2D" parent="."]
 top_level = true

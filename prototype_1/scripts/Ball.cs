@@ -12,40 +12,23 @@ public partial class Ball : RigidBody2D
 	{
 		_line.Width = 5;
 		_line.DefaultColor = new Color(1, 1, 1);
+		_path.Curve.ClearPoints();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_path.Curve.AddPoint(Position);
-		_line.AddPoint(Position);
+		var curve = _path.Curve;
+		if (curve.GetPointCount() == 0 || curve.GetPointPosition(curve.GetPointCount()-1) != Position)
+		{
+			_path.Curve.AddPoint(Position);
+			_line.AddPoint(Position);
+		}
 	}
 
-	public void Throw(Vector2 startPosition, Vector2 velocity)
+	public void Throw(Vector2 velocity)
 	{
-		SetProcess(true);
-		// GD.Print("LOCAL:", Position);
-		Position = startPosition;
-		// Transform = new Transform2D(Vector2.Zero, Vector2.Zero, startPosition);
-		Show();
-		// ApplyImpulse(velocity);
-	}
-
-	public bool IsActive()
-	{
-		return Visible;
-	}
-
-	public void Recall()
-	{
-		Hide();
-		_ResetPath();
-		SetProcess(false);
-	}
-
-	private void _ResetPath()
-	{
-		_line.ClearPoints();
-		_path.Curve.ClearPoints();
+		LinearVelocity = Vector2.Zero;
+		ApplyImpulse(velocity);
 	}
 }

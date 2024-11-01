@@ -3,7 +3,6 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] private Ball _ball;
 	[Export] private float _throwSpeed;
 
 	[ExportCategory("Movement")] [Export] private float _speed;
@@ -11,6 +10,8 @@ public partial class Player : CharacterBody2D
 	[Export] private float _jumpSpeed;
 	[Export] private float _gravity;
 
+	private PackedScene _ballScene = GD.Load<PackedScene>("res://scenes/ball.tscn");
+	private Ball _ball;
 	private PathFollow2D _currentPath;
 
 	// Called when the node enters the scene tree for the first time.
@@ -32,7 +33,7 @@ public partial class Player : CharacterBody2D
 			_CheckRidePath(delta);
 		}
 
-		if (!_ball.IsActive())
+		if (_ball == null)
 		{
 			_CheckThrowBall();
 		}
@@ -86,6 +87,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (Input.IsActionJustPressed("ride_path"))
 		{
+			if (_ball == null) return;
 			PathFollow2D pathFollow = _ball.FindChild("PathFollow2D") as PathFollow2D;
 			_SetPath(pathFollow);
 		}
@@ -106,15 +108,25 @@ public partial class Player : CharacterBody2D
 		{
 			var mousePosition = GetViewport().GetMousePosition();
 			var velocity = (mousePosition - GlobalPosition).Normalized() * _throwSpeed;
-			_ball.Throw(GlobalPosition, velocity);
+			_ThrowBall(velocity);
 		}
+	}
+
+	private void _ThrowBall(Vector2 velocity)
+	{
+		_ball = _ballScene.Instantiate() as Ball;
+		if (_ball == null) return;
+		AddChild(_ball);
+		_ball.Position = Position;
+		_ball.Throw(velocity);
 	}
 	
 	private void _CheckRecallBall()
 	{
 		if (Input.IsActionJustPressed("recall_ball"))
 		{
-			_ball.Recall();
+			_ball.QueueFree();
+			_ball = null;
 		}
 	}
 
