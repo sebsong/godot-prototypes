@@ -8,15 +8,16 @@ _data = {
 }
 point_count = 3
 
-[node name="Path2D" type="Path2D" node_paths=PackedStringArray("_Line")]
+[node name="Path2D" type="Path2D" node_paths=PackedStringArray("_line", "_pathFollow")]
 position = Vector2(184, 39.6756)
 scale = Vector2(0.686677, 0.9077)
 curve = SubResource("Curve2D_0muan")
 script = ExtResource("1_c5txt")
-_Line = NodePath("Line2D")
+_line = NodePath("Line2D")
+_pathFollow = NodePath("PathFollow2D")
+
+[node name="Line2D" type="Line2D" parent="."]
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(911, 178)
 rotation = 0.842411
-
-[node name="Line2D" type="Line2D" parent="."]

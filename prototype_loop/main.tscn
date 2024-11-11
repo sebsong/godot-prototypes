@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://mdn21i3e2apn"]
+[gd_scene load_steps=4 format=3 uid="uid://mdn21i3e2apn"]
 
+[ext_resource type="Script" path="res://Main.cs" id="1_tyyj1"]
 [ext_resource type="PackedScene" uid="uid://bb5xmhdlbuyu0" path="res://loop.tscn" id="1_w325i"]
+[ext_resource type="PackedScene" uid="uid://0xha27upse85" path="res://player.tscn" id="2_5iwav"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_tyyj1")
 
 [node name="Loop" parent="." instance=ExtResource("1_w325i")]
 position = Vector2(195, 25)
+
+[node name="Player" parent="Loop" node_paths=PackedStringArray("_loop") instance=ExtResource("2_5iwav")]
+position = Vector2(528.633, 302.964)
+scale = Vector2(0.728144, 0.550843)
+_loop = NodePath("..")
+_loopSpeed = 300.0
