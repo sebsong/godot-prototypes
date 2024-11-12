@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://0xha27upse85"]
+[gd_scene load_steps=6 format=3 uid="uid://0xha27upse85"]
 
 [ext_resource type="Texture2D" uid="uid://2u23tedlslex" path="res://icon.svg" id="1_jecoc"]
 [ext_resource type="Script" path="res://Player.cs" id="1_jkcy8"]
+[ext_resource type="PackedScene" uid="uid://cicxxe885qgxc" path="res://health_bar.tscn" id="3_igywx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v4is1"]
 radius = 64.0
@@ -35,6 +36,9 @@ disabled = true
 debug_color = Color(0.994583, 0, 0.219729, 0.42)
 
 [node name="AttackHitBoxTimer" type="Timer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("3_igywx")]
+position = Vector2(0, 74)
 
 [connection signal="body_entered" from="AttackHitBox" to="." method="OnAttackHitBoxBodyEntered"]
 [connection signal="timeout" from="AttackHitBoxTimer" to="." method="OnAttackHitBoxActiveTimerTimeout"]

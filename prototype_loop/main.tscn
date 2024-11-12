@@ -15,7 +15,6 @@ position = Vector2(195, 25)
 position = Vector2(528.633, 302.963)
 scale = Vector2(0.728144, 0.550843)
 _loop = NodePath("..")
-_loopSpeed = 300.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_hxyh2")]
 position = Vector2(277, 164)
