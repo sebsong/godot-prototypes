@@ -36,6 +36,11 @@ public partial class Player : CharacterBody2D
 		_loopFollow.Progress += (float)(_loopSpeed * delta);
 	}
 
+	private void ReverseDirection()
+	{
+		_loopSpeed *= -1;
+	}
+
 	private void CheckAction()
 	{
 		if (Input.IsActionJustPressed("action"))
@@ -66,6 +71,7 @@ public partial class Player : CharacterBody2D
 		if (body is Enemy enemy)
 		{
 			enemy.TakeDamage(1);
+			ReverseDirection();
 		}
 	}
 

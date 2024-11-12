@@ -18,7 +18,7 @@ motion_mode = 1
 script = ExtResource("1_jkcy8")
 _attackHitBoxShape = NodePath("AttackHitBox/AttackHitBoxShape")
 _attackHitBoxActiveTimer = NodePath("AttackHitBoxTimer")
-_loopSpeed = 300.0
+_loopSpeed = 500.0
 _attackHitBoxActiveSeconds = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
