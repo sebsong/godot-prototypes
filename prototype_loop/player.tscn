@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://0xha27upse85"]
+[gd_scene load_steps=5 format=3 uid="uid://0xha27upse85"]
 
 [ext_resource type="Texture2D" uid="uid://2u23tedlslex" path="res://icon.svg" id="1_jecoc"]
 [ext_resource type="Script" path="res://Player.cs" id="1_jkcy8"]
@@ -6,13 +6,35 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_v4is1"]
 radius = 64.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lk7im"]
+radius = 96.0208
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_attackHitBoxShape", "_attackHitBoxActiveTimer")]
+z_index = 1
 scale = Vector2(0.5, 0.5)
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_jkcy8")
+_attackHitBoxShape = NodePath("AttackHitBox/AttackHitBoxShape")
+_attackHitBoxActiveTimer = NodePath("AttackHitBoxTimer")
+_loopSpeed = 300.0
+_attackHitBoxActiveSeconds = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jecoc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v4is1")
+
+[node name="AttackHitBox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="AttackHitBoxShape" type="CollisionShape2D" parent="AttackHitBox"]
+shape = SubResource("CircleShape2D_lk7im")
+disabled = true
+debug_color = Color(0.994583, 0, 0.219729, 0.42)
+
+[node name="AttackHitBoxTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AttackHitBox" to="." method="OnAttackHitBoxBodyEntered"]
+[connection signal="timeout" from="AttackHitBoxTimer" to="." method="OnAttackHitBoxActiveTimerTimeout"]
