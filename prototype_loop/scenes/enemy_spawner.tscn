@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxclmrv65amed"]
+
+[ext_resource type="Script" path="res://scripts/EnemySpawner.cs" id="1_iw3ov"]
+[ext_resource type="PackedScene" uid="uid://cxra2iyvhc33h" path="res://scenes/enemy.tscn" id="2_14vsa"]
+
+[sub_resource type="Curve2D" id="Curve2D_l7i6r"]
+_data = {
+"points": PackedVector2Array(134.043, -178.887, -134.043, 178.887, 340.388, 120.932, -107.052, -67.3019, 107.052, 67.3019, 413.982, 495.574, -71.2634, 87.9677, 71.2634, -87.9677, 816.113, 465.233, 115.13, 107.201, -115.13, -107.201, 817, 89, 100.98, -142.149, -100.98, 142.149, 340.388, 120.932)
+}
+point_count = 5
+
+[node name="EnemySpawner" type="Path2D" node_paths=PackedStringArray("_pathFollow")]
+curve = SubResource("Curve2D_l7i6r")
+script = ExtResource("1_iw3ov")
+_enemyScene = ExtResource("2_14vsa")
+_pathFollow = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(340.388, 120.932)
+rotation = 2.21386
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]

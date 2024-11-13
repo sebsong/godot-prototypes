@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_tyyj1"]
 [ext_resource type="PackedScene" uid="uid://bb5xmhdlbuyu0" path="res://scenes/loop.tscn" id="1_w325i"]
 [ext_resource type="PackedScene" uid="uid://0xha27upse85" path="res://scenes/player.tscn" id="2_5iwav"]
-[ext_resource type="PackedScene" uid="uid://cxra2iyvhc33h" path="res://scenes/enemy.tscn" id="4_hxyh2"]
+[ext_resource type="PackedScene" uid="uid://cxclmrv65amed" path="res://scenes/enemy_spawner.tscn" id="4_iippq"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tyyj1")
@@ -16,11 +16,6 @@ position = Vector2(528.633, 302.963)
 scale = Vector2(0.728144, 0.550843)
 _loop = NodePath("..")
 
-[node name="Enemy" parent="." instance=ExtResource("4_hxyh2")]
-position = Vector2(277, 164)
-
-[node name="Enemy2" parent="." instance=ExtResource("4_hxyh2")]
-position = Vector2(895, 237)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_hxyh2")]
-position = Vector2(257, 344)
+[node name="EnemySpawner" parent="." instance=ExtResource("4_iippq")]
+position = Vector2(-20.434, 8)
+scale = Vector2(1.01126, 1.10382)
