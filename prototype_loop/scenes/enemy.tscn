@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxra2iyvhc33h"]
 
 [ext_resource type="Texture2D" uid="uid://2u23tedlslex" path="res://icon.svg" id="1_4g35n"]
-[ext_resource type="Script" path="res://Enemy.cs" id="1_ihuv8"]
-[ext_resource type="PackedScene" uid="uid://cicxxe885qgxc" path="res://health_bar.tscn" id="3_kgjgs"]
+[ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_ihuv8"]
+[ext_resource type="PackedScene" uid="uid://cicxxe885qgxc" path="res://scenes/health_bar.tscn" id="3_kgjgs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq5ul"]
 size = Vector2(128, 128)

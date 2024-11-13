@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bb5xmhdlbuyu0"]
 
-[ext_resource type="Script" path="res://Loop.cs" id="1_c5txt"]
+[ext_resource type="Script" path="res://scripts/Loop.cs" id="1_c5txt"]
 
 [sub_resource type="Curve2D" id="Curve2D_0muan"]
 _data = {

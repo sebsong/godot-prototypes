@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cicxxe885qgxc"]
 
-[ext_resource type="Script" path="res://HealthBar.cs" id="1_n0y0m"]
+[ext_resource type="Script" path="res://scripts/HealthBar.cs" id="1_n0y0m"]
 [ext_resource type="Texture2D" uid="uid://2u23tedlslex" path="res://icon.svg" id="1_si6u1"]
 
 [node name="HealthBar" type="Node2D" node_paths=PackedStringArray("_progressBar")]
