@@ -15,6 +15,7 @@ public partial class Player : CharacterBody2D
 	[Export] private float _attackHitBoxActiveSeconds;
 
 	private PathFollow2D _loopFollow;
+	private bool _hasAlreadyHitEnemy;
 
 	public override void _Ready()
 	{
@@ -52,6 +53,7 @@ public partial class Player : CharacterBody2D
 	private void Attack()
 	{
 		// TODO: play animation
+		_hasAlreadyHitEnemy = false;
 		EnableAttackHitBox();
 		_attackHitBoxActiveTimer.Start(_attackHitBoxActiveSeconds);
 	}
@@ -71,7 +73,11 @@ public partial class Player : CharacterBody2D
 		if (body is Enemy enemy)
 		{
 			enemy.TakeDamage(1);
-			ReverseDirection();
+			if (!_hasAlreadyHitEnemy)
+			{
+				ReverseDirection();
+			}
+			_hasAlreadyHitEnemy = true;
 		}
 	}
 
