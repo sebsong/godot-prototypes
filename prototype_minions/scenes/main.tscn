@@ -1,3 +1,24 @@
-[gd_scene format=3 uid="uid://by4yk2co0cyv3"]
+[gd_scene load_steps=3 format=3 uid="uid://by4yk2co0cyv3"]
+
+[ext_resource type="PackedScene" uid="uid://dui7csxstqpw3" path="res://scenes/wall.tscn" id="1_nfebl"]
+[ext_resource type="PackedScene" uid="uid://cbrcdax58qkla" path="res://scenes/minion.tscn" id="2_i06yn"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="wall" parent="." instance=ExtResource("1_nfebl")]
+
+[node name="wall2" parent="." instance=ExtResource("1_nfebl")]
+position = Vector2(1143, 314)
+
+[node name="wall3" parent="." instance=ExtResource("1_nfebl")]
+position = Vector2(566, 636)
+rotation = 1.5708
+scale = Vector2(0.43, 10)
+
+[node name="wall4" parent="." instance=ExtResource("1_nfebl")]
+position = Vector2(564, 5)
+rotation = 1.5708
+scale = Vector2(0.43, 10)
+
+[node name="Minion" parent="." instance=ExtResource("2_i06yn")]
+position = Vector2(617, 340)
