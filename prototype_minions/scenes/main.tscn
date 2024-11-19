@@ -1,40 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://by4yk2co0cyv3"]
+[gd_scene load_steps=5 format=3 uid="uid://by4yk2co0cyv3"]
 
+[ext_resource type="Script" path="res://scenes/Main.cs" id="1_l21ws"]
 [ext_resource type="PackedScene" uid="uid://dui7csxstqpw3" path="res://scenes/wall.tscn" id="1_nfebl"]
 [ext_resource type="PackedScene" uid="uid://cbrcdax58qkla" path="res://scenes/minion.tscn" id="2_i06yn"]
 [ext_resource type="PackedScene" uid="uid://bkkkbcmwgltey" path="res://scenes/enemy.tscn" id="3_m3n6m"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_l21ws")
 
 [node name="wall" parent="." instance=ExtResource("1_nfebl")]
+position = Vector2(-10, 672)
+scale = Vector2(0.43, 15)
 
 [node name="wall2" parent="." instance=ExtResource("1_nfebl")]
-position = Vector2(1143, 314)
+position = Vector2(2559, 707)
+scale = Vector2(0.43, 15)
 
 [node name="wall3" parent="." instance=ExtResource("1_nfebl")]
-position = Vector2(566, 636)
+position = Vector2(1267, 1449)
 rotation = 1.5708
-scale = Vector2(0.43, 10)
+scale = Vector2(0.43, 20)
 
 [node name="wall4" parent="." instance=ExtResource("1_nfebl")]
-position = Vector2(564, 5)
+position = Vector2(1257, 7)
 rotation = 1.5708
-scale = Vector2(0.43, 10)
+scale = Vector2(0.43, 20)
 
 [node name="Minion" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(617, 340)
+position = Vector2(1249, 693)
 
 [node name="Minion2" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(617, 340)
+position = Vector2(1249, 693)
 
 [node name="Minion3" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(617, 340)
+position = Vector2(1249, 693)
 
 [node name="Enemy" parent="." instance=ExtResource("3_m3n6m")]
-position = Vector2(142, 463)
+position = Vector2(467, 1108)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_m3n6m")]
-position = Vector2(922, 378)
+position = Vector2(1958, 355)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_m3n6m")]
-position = Vector2(293, 143)
+position = Vector2(1034, 221)
