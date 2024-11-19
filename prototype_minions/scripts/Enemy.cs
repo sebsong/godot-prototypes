@@ -13,6 +13,7 @@ public partial class Enemy : CharacterBody2D
     public override void _Ready()
     {
         base._Ready();
+        _healthBar.SetMaxHealth(_initialHealth);
         _currentHealth = _initialHealth;
     }
 

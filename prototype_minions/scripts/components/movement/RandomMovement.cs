@@ -24,7 +24,7 @@ public partial class RandomMovement : MovementComponent
         return _currentVelocity;
     }
 
-    public override void OnCollision()
+    public override void OnCollision(KinematicCollision2D collision)
     {
         UpdateVelocity();
     }

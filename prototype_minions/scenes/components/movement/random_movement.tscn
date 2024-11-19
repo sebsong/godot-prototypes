@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://247ib2kk6obl"]
 
-[ext_resource type="Script" path="res://scripts/RandomMovement.cs" id="1_x3iq5"]
+[ext_resource type="Script" path="res://scripts/components/movement/RandomMovement.cs" id="1_dg51a"]
 
 [node name="MovementRandom" type="Node2D" node_paths=PackedStringArray("_velocityChangeTimer")]
-script = ExtResource("1_x3iq5")
-_speed = 100.0
+script = ExtResource("1_dg51a")
+_speed = 300.0
 _velocityChangeTimer = NodePath("VelocityChangeTimer")
 _minTimerDuration = 0.5
 _maxTimerDuration = 3.0
