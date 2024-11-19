@@ -1,28 +1,25 @@
 using Godot;
 using System;
+using prototype_minions.scripts;
 
 public partial class Minion : CharacterBody2D
 {
-	[Export]
-	private float _speed;
+	private MovementComponent _movementComponent;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_movementComponent = ComponentDefaults.DefaultMovementComponent.Instantiate<RandomMovement>();
+		AddChild(_movementComponent);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Velocity = GenerateRandomVelocity();
-		GD.Print(Velocity);
-		MoveAndSlide();
-	}
-
-	private Vector2 GenerateRandomVelocity()
-	{
-		float x = GD.RandRange(-1, 1);
-		float y = GD.RandRange(-1, 1);
-		return new Vector2(x, y).Normalized() * _speed;
+		Velocity = _movementComponent.GetVelocity();
+		if (MoveAndSlide())
+		{
+			_movementComponent.OnCollision();
+		}
 	}
 }

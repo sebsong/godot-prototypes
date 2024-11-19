@@ -7,8 +7,8 @@
 size = Vector2(516, 512)
 
 [node name="Minion" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_c06wf")
-_speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ed60y")

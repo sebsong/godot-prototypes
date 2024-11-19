@@ -22,3 +22,9 @@ scale = Vector2(0.43, 10)
 
 [node name="Minion" parent="." instance=ExtResource("2_i06yn")]
 position = Vector2(617, 340)
+
+[node name="Minion2" parent="." instance=ExtResource("2_i06yn")]
+position = Vector2(617, 340)
+
+[node name="Minion3" parent="." instance=ExtResource("2_i06yn")]
+position = Vector2(617, 340)
