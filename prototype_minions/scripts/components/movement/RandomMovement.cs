@@ -4,8 +4,6 @@ using prototype_minions.scripts;
 
 public partial class RandomMovement : MovementComponent
 {
-    [Export] private float _speed;
-
     [Export] private Timer _velocityChangeTimer;
     [Export] private float _minTimerDuration;
     [Export] private float _maxTimerDuration;
@@ -38,7 +36,7 @@ public partial class RandomMovement : MovementComponent
     {
         float x = _rng.RandfRange(-1f, 1f);
         float y = _rng.RandfRange(-1f, 1f);
-        return new Vector2(x, y).Normalized() * _speed;
+        return new Vector2(x, y).Normalized() * Speed;
     }
 
     private void OnVelocityChangeTimerTimeout()

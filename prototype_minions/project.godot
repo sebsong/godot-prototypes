@@ -26,6 +26,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="prototype_minions"
 
+[global_group]
+
+enemies=""
+
 [input]
 
 quit={

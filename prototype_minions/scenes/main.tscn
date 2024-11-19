@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://by4yk2co0cyv3"]
 
-[ext_resource type="Script" path="res://scenes/Main.cs" id="1_l21ws"]
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_l21ws"]
 [ext_resource type="PackedScene" uid="uid://dui7csxstqpw3" path="res://scenes/wall.tscn" id="1_nfebl"]
 [ext_resource type="PackedScene" uid="uid://cbrcdax58qkla" path="res://scenes/minion.tscn" id="2_i06yn"]
 [ext_resource type="PackedScene" uid="uid://bkkkbcmwgltey" path="res://scenes/enemy.tscn" id="3_m3n6m"]
@@ -33,6 +33,15 @@ position = Vector2(1249, 693)
 position = Vector2(1249, 693)
 
 [node name="Minion3" parent="." instance=ExtResource("2_i06yn")]
+position = Vector2(1249, 693)
+
+[node name="Minion4" parent="." instance=ExtResource("2_i06yn")]
+position = Vector2(1249, 693)
+
+[node name="Minion5" parent="." instance=ExtResource("2_i06yn")]
+position = Vector2(1249, 693)
+
+[node name="Minion6" parent="." instance=ExtResource("2_i06yn")]
 position = Vector2(1249, 693)
 
 [node name="Enemy" parent="." instance=ExtResource("3_m3n6m")]
