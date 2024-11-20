@@ -6,6 +6,8 @@ namespace prototype_minions.scripts.components.movement;
 
 public partial class TargetEnemyMovement : MovementComponent
 {
+    public override ComponentUtils.ComponentType ComponentType => ComponentUtils.ComponentType.TargetEnemyMovement;
+
     private Enemy _enemyTarget;
 
     public override void _Ready()

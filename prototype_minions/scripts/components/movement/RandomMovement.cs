@@ -5,6 +5,8 @@ namespace prototype_minions.scripts.components.movement;
 
 public partial class RandomMovement : MovementComponent
 {
+    public override ComponentUtils.ComponentType ComponentType => ComponentUtils.ComponentType.RandomMovement;
+
     [Export] private Timer _velocityChangeTimer;
     [Export] private float _minTimerDuration;
     [Export] private float _maxTimerDuration;

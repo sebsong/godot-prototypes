@@ -5,6 +5,8 @@ namespace prototype_minions.scripts.components.attack;
 
 public partial class ContactAttack : AttackComponent
 {
+    public override ComponentUtils.ComponentType ComponentType => ComponentUtils.ComponentType.ContactAttack;
+
     private double _timeSinceLastAttack;
     private Enemy _lastEnemyHit;
 
