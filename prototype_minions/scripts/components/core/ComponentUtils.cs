@@ -19,8 +19,12 @@ public static class ComponentUtils
     /* Attack Scenes */
     public static readonly PackedScene ContactAttackScene = LoadScene($"{AttackPath}/contact_attack.tscn");
 
+    /* Movement Defaults */
     public const float DefaultMovementSpeed = 300f;
+
+    /* Attack Defaults */
     public const int DefaultDamage = 1;
+    public const float DefaultAttackCooldown = 1f;
 
     public static T AttachComponent<T>(Node2D owner, PackedScene componentScene) where T : Component
     {
