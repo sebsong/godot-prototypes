@@ -11,13 +11,11 @@ public static class ComponentUtils
     private const string AttackPath = ComponentsPath + "/attack";
 
     /* Movement Scenes */
-    public static readonly PackedScene RandomMovementScene = LoadScene($"{MovementPath}/random_movement.tscn");
-
-    public static readonly PackedScene TargetEnemyMovementScene =
-        LoadScene($"{MovementPath}/target_enemy_movement.tscn");
+    public static readonly PackedScene RandomMovementScene = LoadScene(MovementPath, "random_movement.tscn");
+    public static readonly PackedScene TargetEnemyMovementScene = LoadScene(MovementPath, "target_enemy_movement.tscn");
 
     /* Attack Scenes */
-    public static readonly PackedScene ContactAttackScene = LoadScene($"{AttackPath}/contact_attack.tscn");
+    public static readonly PackedScene ContactAttackScene = LoadScene(AttackPath, "contact_attack.tscn");
 
     /* Movement Defaults */
     public const float DefaultMovementSpeed = 300f;
@@ -25,17 +23,29 @@ public static class ComponentUtils
     /* Attack Defaults */
     public const int DefaultDamage = 1;
     public const float DefaultAttackCooldown = 1f;
-    
-    public enum MovementComponents
+
+    public enum ComponentType
     {
-        Random,
-        TargetEnemy,
+        /** Movement Component Types **/
+        RandomMovement,
+        TargetEnemyMovement,
+
+        /** Attack Component Types **/
+        ContactAttack,
     }
 
-    public static T AttachComponent<T>(Node2D owner, PackedScene componentScene) where T : Component
+    private static readonly Dictionary<ComponentType, PackedScene> TypeToScene = new()
+    {
+        { ComponentType.RandomMovement, RandomMovementScene },
+        { ComponentType.TargetEnemyMovement, TargetEnemyMovementScene },
+        { ComponentType.ContactAttack, ContactAttackScene },
+    };
+
+    public static T AttachComponent<T>(Node2D owner, ComponentType componentType) where T : Component
     {
         ClearComponents<T>(owner);
 
+        PackedScene componentScene = TypeToScene[componentType];
         T component = componentScene.Instantiate<T>();
         owner.AddChild(component);
         return component;
@@ -50,8 +60,8 @@ public static class ComponentUtils
         }
     }
 
-    private static PackedScene LoadScene(string path)
+    private static PackedScene LoadScene(string pathPrefix, string sceneFileName)
     {
-        return ResourceLoader.Load<PackedScene>(path);
+        return ResourceLoader.Load<PackedScene>($"{pathPrefix}/{sceneFileName}");
     }
 }
