@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 
@@ -33,7 +34,18 @@ public static class ComponentUtils
         ContactAttack,
     }
 
-    private static readonly Dictionary<ComponentType, PackedScene> TypeToScene = new()
+    public static readonly List<ComponentType> MovementComponentTypes = new()
+    {
+        ComponentType.RandomMovement,
+        ComponentType.TargetEnemyMovement
+    };
+
+    public static readonly List<ComponentType> AttackComponentTypes = new()
+    {
+        ComponentType.ContactAttack,
+    };
+
+    private static readonly Godot.Collections.Dictionary<ComponentType, PackedScene> TypeToScene = new()
     {
         { ComponentType.RandomMovement, RandomMovementScene },
         { ComponentType.TargetEnemyMovement, TargetEnemyMovementScene },

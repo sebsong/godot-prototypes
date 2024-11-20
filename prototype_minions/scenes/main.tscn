@@ -1,12 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://by4yk2co0cyv3"]
+[gd_scene load_steps=6 format=3 uid="uid://by4yk2co0cyv3"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_l21ws"]
 [ext_resource type="PackedScene" uid="uid://dui7csxstqpw3" path="res://scenes/wall.tscn" id="1_nfebl"]
 [ext_resource type="PackedScene" uid="uid://cbrcdax58qkla" path="res://scenes/minion.tscn" id="2_i06yn"]
+[ext_resource type="PackedScene" uid="uid://c6jiqm8cs3d0o" path="res://scenes/ui/component_selector.tscn" id="2_sinrd"]
 [ext_resource type="PackedScene" uid="uid://bkkkbcmwgltey" path="res://scenes/enemy.tscn" id="3_m3n6m"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("_vBoxContainer")]
 script = ExtResource("1_l21ws")
+_componentSelectorScene = ExtResource("2_sinrd")
+_vBoxContainer = NodePath("Control/VBoxContainer")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 162.0
+offset_top = 193.0
+offset_right = 162.0
+offset_bottom = 193.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -42.0
+offset_right = -126.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 40
 
 [node name="wall" parent="." instance=ExtResource("1_nfebl")]
 position = Vector2(-10, 672)

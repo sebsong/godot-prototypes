@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3scxi"]
 size = Vector2(516, 512)
 
-[node name="Minion" type="CharacterBody2D"]
+[node name="Minion" type="CharacterBody2D" groups=["minions"]]
 scale = Vector2(0.25, 0.25)
 motion_mode = 1
 script = ExtResource("1_c06wf")

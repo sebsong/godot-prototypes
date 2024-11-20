@@ -11,14 +11,8 @@ public partial class Minion : CharacterBody2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        _movementComponent = ComponentUtils.AttachComponent<MovementComponent>(
-            this,
-            ComponentUtils.ComponentType.RandomMovement
-        );
-        _attackComponent = ComponentUtils.AttachComponent<AttackComponent>(
-            this,
-            ComponentUtils.ComponentType.ContactAttack
-        );
+        SetMovementComponent(ComponentUtils.ComponentType.RandomMovement);
+        SetAttackComponent(ComponentUtils.ComponentType.ContactAttack);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,5 +26,21 @@ public partial class Minion : CharacterBody2D
             _movementComponent.OnCollision(collision);
             _attackComponent.OnCollision(collision);
         }
+    }
+
+    public void SetMovementComponent(ComponentUtils.ComponentType componentType)
+    {
+        _movementComponent = ComponentUtils.AttachComponent<MovementComponent>(
+            this,
+            componentType
+        );
+    }
+
+    public void SetAttackComponent(ComponentUtils.ComponentType componentType)
+    {
+        _attackComponent = ComponentUtils.AttachComponent<AttackComponent>(
+            this,
+            componentType
+        );
     }
 }
