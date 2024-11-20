@@ -9,6 +9,7 @@ size = Vector2(128, 128)
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_healthBar") groups=["enemies"]]
 scale = Vector2(0.5, 0.5)
+motion_mode = 1
 script = ExtResource("1_1lmc1")
 _healthBar = NodePath("HealthBar")
 

@@ -27,22 +27,22 @@ rotation = 1.5708
 scale = Vector2(0.43, 20)
 
 [node name="Minion" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(1249, 693)
+position = Vector2(1299, 631)
 
 [node name="Minion2" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(1249, 693)
+position = Vector2(1211, 621)
 
 [node name="Minion3" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(1249, 693)
+position = Vector2(1166, 685)
 
 [node name="Minion4" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(1249, 693)
+position = Vector2(1212, 756)
 
 [node name="Minion5" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(1249, 693)
+position = Vector2(1297, 750)
 
 [node name="Minion6" parent="." instance=ExtResource("2_i06yn")]
-position = Vector2(1249, 693)
+position = Vector2(1335, 693)
 
 [node name="Enemy" parent="." instance=ExtResource("3_m3n6m")]
 position = Vector2(467, 1108)

@@ -8,6 +8,7 @@ size = Vector2(516, 512)
 
 [node name="Minion" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
+motion_mode = 1
 script = ExtResource("1_c06wf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
