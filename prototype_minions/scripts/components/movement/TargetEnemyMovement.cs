@@ -3,7 +3,7 @@ using System;
 using Godot.Collections;
 using prototype_minions.scripts;
 
-public partial class EnemyTargetMovement : MovementComponent
+public partial class TargetEnemyMovement : MovementComponent
 {
     private Enemy _enemyTarget;
 

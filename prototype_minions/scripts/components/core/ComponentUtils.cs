@@ -13,8 +13,8 @@ public static class ComponentUtils
     /* Movement Scenes */
     public static readonly PackedScene RandomMovementScene = LoadScene($"{MovementPath}/random_movement.tscn");
 
-    public static readonly PackedScene EnemyTargetMovementScene =
-        LoadScene($"{MovementPath}/enemy_target_movement.tscn");
+    public static readonly PackedScene TargetEnemyMovementScene =
+        LoadScene($"{MovementPath}/target_enemy_movement.tscn");
 
     /* Attack Scenes */
     public static readonly PackedScene ContactAttackScene = LoadScene($"{AttackPath}/contact_attack.tscn");
@@ -25,6 +25,12 @@ public static class ComponentUtils
     /* Attack Defaults */
     public const int DefaultDamage = 1;
     public const float DefaultAttackCooldown = 1f;
+    
+    public enum MovementComponents
+    {
+        Random,
+        TargetEnemy,
+    }
 
     public static T AttachComponent<T>(Node2D owner, PackedScene componentScene) where T : Component
     {
