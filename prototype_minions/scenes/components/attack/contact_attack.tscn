@@ -4,4 +4,3 @@
 
 [node name="ContactAttack" type="Node2D"]
 script = ExtResource("1_a4msn")
-_damage = 1

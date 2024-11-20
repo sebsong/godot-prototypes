@@ -2,9 +2,9 @@ namespace prototype_minions.scripts;
 
 using Godot;
 
-public abstract partial class MovementComponent : Node2D
+public abstract partial class MovementComponent : Component
 {
-    [Export] internal float Speed = ComponentDefaults.DefaultMovementSpeed;
+    [Export] internal float Speed = ComponentUtils.DefaultMovementSpeed;
 
     public abstract Vector2 GetVelocity();
 
