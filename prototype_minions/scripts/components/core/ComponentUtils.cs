@@ -1,8 +1,7 @@
-using System;
 using Godot;
 using Godot.Collections;
 
-namespace prototype_minions.scripts;
+namespace prototype_minions.scripts.components.core;
 
 public static class ComponentUtils
 {

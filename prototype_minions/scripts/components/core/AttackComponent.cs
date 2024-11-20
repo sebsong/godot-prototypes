@@ -1,6 +1,6 @@
-namespace prototype_minions.scripts;
-
 using Godot;
+
+namespace prototype_minions.scripts.components.core;
 
 public abstract partial class AttackComponent : Component
 {

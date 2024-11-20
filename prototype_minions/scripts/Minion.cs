@@ -1,6 +1,7 @@
 using Godot;
-using System;
-using prototype_minions.scripts;
+using prototype_minions.scripts.components.core;
+
+namespace prototype_minions.scripts;
 
 public partial class Minion : CharacterBody2D
 {

@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace prototype_minions.scripts;
 
 public partial class Enemy : CharacterBody2D
 {
