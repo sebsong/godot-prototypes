@@ -8,6 +8,8 @@ public partial class FollowAllyMovement : MovementComponent
 {
     public override ComponentUtils.ComponentType ComponentType => ComponentUtils.ComponentType.FollowAllyMovement;
 
+    [Export] private float _followDistance;
+
     private Minion _allyTarget;
 
     public override void _Ready()
@@ -23,7 +25,7 @@ public partial class FollowAllyMovement : MovementComponent
             UpdateAllyTarget();
         }
 
-        if (_allyTarget == null)
+        if (_allyTarget == null || Position.DistanceTo(_allyTarget.Position) <= _followDistance)
         {
             return Vector2.Zero;
         }

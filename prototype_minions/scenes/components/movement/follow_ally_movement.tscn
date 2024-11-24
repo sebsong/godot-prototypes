@@ -4,3 +4,4 @@
 
 [node name="FollowAllyMovement" type="Node2D"]
 script = ExtResource("1_2k1an")
+_followDistance = 200.0
