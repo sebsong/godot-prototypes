@@ -13,7 +13,11 @@ public static class ComponentUtils
 
     /* Movement Scenes */
     private static readonly PackedScene RandomMovementScene = LoadScene(MovementPath, "random_movement.tscn");
-    private static readonly PackedScene TargetEnemyMovementScene = LoadScene(MovementPath, "target_enemy_movement.tscn");
+
+    private static readonly PackedScene
+        TargetEnemyMovementScene = LoadScene(MovementPath, "target_enemy_movement.tscn");
+
+    private static readonly PackedScene FollowALlyMovementScene = LoadScene(MovementPath, "follow_ally_movement.tscn");
 
     /* Attack Scenes */
     private static readonly PackedScene ContactAttackScene = LoadScene(AttackPath, "contact_attack.tscn");
@@ -31,6 +35,7 @@ public static class ComponentUtils
         /** Movement Component Types **/
         RandomMovement,
         TargetEnemyMovement,
+        FollowAllyMovement,
 
         /** Attack Component Types **/
         ContactAttack,
@@ -40,7 +45,8 @@ public static class ComponentUtils
     public static readonly List<ComponentType> MovementComponentTypes = new()
     {
         ComponentType.RandomMovement,
-        ComponentType.TargetEnemyMovement
+        ComponentType.TargetEnemyMovement,
+        ComponentType.FollowAllyMovement,
     };
 
     public static readonly List<ComponentType> AttackComponentTypes = new()
@@ -51,8 +57,12 @@ public static class ComponentUtils
 
     private static readonly Godot.Collections.Dictionary<ComponentType, PackedScene> TypeToScene = new()
     {
+        // Movement Component Types
         { ComponentType.RandomMovement, RandomMovementScene },
         { ComponentType.TargetEnemyMovement, TargetEnemyMovementScene },
+        { ComponentType.FollowAllyMovement, FollowALlyMovementScene },
+
+        // Attack Component Types
         { ComponentType.ContactAttack, ContactAttackScene },
         { ComponentType.AreaAttack, AreaAttackScene },
     };
