@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 
@@ -11,11 +12,12 @@ public static class ComponentUtils
     private const string AttackPath = ComponentsPath + "/attack";
 
     /* Movement Scenes */
-    public static readonly PackedScene RandomMovementScene = LoadScene(MovementPath, "random_movement.tscn");
-    public static readonly PackedScene TargetEnemyMovementScene = LoadScene(MovementPath, "target_enemy_movement.tscn");
+    private static readonly PackedScene RandomMovementScene = LoadScene(MovementPath, "random_movement.tscn");
+    private static readonly PackedScene TargetEnemyMovementScene = LoadScene(MovementPath, "target_enemy_movement.tscn");
 
     /* Attack Scenes */
-    public static readonly PackedScene ContactAttackScene = LoadScene(AttackPath, "contact_attack.tscn");
+    private static readonly PackedScene ContactAttackScene = LoadScene(AttackPath, "contact_attack.tscn");
+    private static readonly PackedScene AreaAttackScene = LoadScene(AttackPath, "area_attack.tscn");
 
     /* Movement Defaults */
     public const float DefaultMovementSpeed = 300f;
@@ -32,6 +34,7 @@ public static class ComponentUtils
 
         /** Attack Component Types **/
         ContactAttack,
+        AreaAttack,
     }
 
     public static readonly List<ComponentType> MovementComponentTypes = new()
@@ -43,6 +46,7 @@ public static class ComponentUtils
     public static readonly List<ComponentType> AttackComponentTypes = new()
     {
         ComponentType.ContactAttack,
+        ComponentType.AreaAttack,
     };
 
     private static readonly Godot.Collections.Dictionary<ComponentType, PackedScene> TypeToScene = new()
@@ -50,6 +54,7 @@ public static class ComponentUtils
         { ComponentType.RandomMovement, RandomMovementScene },
         { ComponentType.TargetEnemyMovement, TargetEnemyMovementScene },
         { ComponentType.ContactAttack, ContactAttackScene },
+        { ComponentType.AreaAttack, AreaAttackScene },
     };
 
     public static T AttachComponent<T>(Node2D owner, ComponentType componentType) where T : Component
@@ -64,10 +69,12 @@ public static class ComponentUtils
 
     private static void ClearComponents<T>(Node2D owner)
     {
-        Array<Node> componentNodes = owner.FindChildren("*", typeof(T).Name);
-        foreach (var node in componentNodes)
+        foreach (var node in owner.GetChildren())
         {
-            owner.RemoveChild(node);
+            if (node is T)
+            {
+                owner.RemoveChild(node);
+            }
         }
     }
 

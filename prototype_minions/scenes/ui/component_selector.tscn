@@ -10,6 +10,7 @@ _movementOptions = NodePath("HBoxContainer/MovementOptions")
 _attackOptions = NodePath("HBoxContainer/AttackOptions")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
