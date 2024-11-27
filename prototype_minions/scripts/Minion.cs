@@ -19,6 +19,7 @@ public partial class Minion : CharacterBody2D
     public override void _Process(double delta)
     {
         Velocity = _movementComponent.GetVelocity();
+        LookAt(GlobalPosition + Velocity);
         _attackComponent.Attack(delta);
         if (MoveAndSlide())
         {
