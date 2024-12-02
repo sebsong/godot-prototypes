@@ -17,3 +17,6 @@ mono_crash.*.json
 # Jetbrains
 .idea
 *DotSettings.user
+
+# Mac
+.DS_Store

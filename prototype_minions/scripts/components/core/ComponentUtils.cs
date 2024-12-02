@@ -24,7 +24,7 @@ public static class ComponentUtils
     private static readonly PackedScene AreaAttackScene = LoadScene(AttackPath, "area_attack.tscn");
 
     /* Movement Defaults */
-    public const float DefaultMovementSpeed = 300f;
+    public const float DefaultMovementSpeed = 100f;
 
     /* Attack Defaults */
     public const int DefaultDamage = 1;
